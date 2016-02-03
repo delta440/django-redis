@@ -349,7 +349,7 @@ class DefaultClient(object):
             client = self.get_client(write=True)
 
         try:
-            pipeline = client.pipeline()
+            pipeline = client.pipeline(transaction=False)
             for key, value in data.items():
                 self.set(key, value, timeout, version=version, client=pipeline)
             pipeline.execute()
